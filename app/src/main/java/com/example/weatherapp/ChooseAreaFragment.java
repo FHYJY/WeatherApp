@@ -94,6 +94,7 @@ public class ChooseAreaFragment extends Fragment {
                 }
             }
         });
+        queryProvinces();
     }
 
     /*查询全国所有的省，优先从数据库查询，如果没有查询到再去服务器上查询*/
@@ -162,12 +163,11 @@ public class ChooseAreaFragment extends Fragment {
         HttpUtil.sendOkHttpRequest(address, new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                //通过runOnUiThread()方法回到主线程处理逻辑
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         closeProgressDialog();
-                        Toast.makeText(getContext(), "加载失败", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(),"加载失败",Toast.LENGTH_SHORT);
                     }
                 });
             }
@@ -198,6 +198,7 @@ public class ChooseAreaFragment extends Fragment {
                         }
                     });
                 }
+
             }
         });
     }
