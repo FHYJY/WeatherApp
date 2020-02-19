@@ -17,11 +17,11 @@ public class Utility {
     public static boolean handleProvinceResponse(String response){
         if (!TextUtils.isEmpty(response)){
             try {
-                JSONArray allProvinces = new JSONArray(response);
+                JSONArray allProvinces = new JSONArray(response);   //定义一个JSON数组，并将数据传到数组里面
                 for (int i = 0; i < allProvinces.length(); i++){
-                    JSONObject provinceObject = allProvinces.getJSONObject(i);
+                    JSONObject provinceObject = allProvinces.getJSONObject(i);    //创建JSONObject对象并将数组内的数据传入对象中
                     Province province = new Province();
-                    province.setProvinceName(provinceObject.getString("name"));
+                    province.setProvinceName(provinceObject.getString("name"));    //通过对应的get方法获取JSONObject对象中的各项值
                     province.setProvinceCode(provinceObject.getInt("id"));
                     province.save();
                 }
